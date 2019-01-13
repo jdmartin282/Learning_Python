@@ -1,6 +1,6 @@
 import random
 import json
-import Character
+from Character import Character
 
 random.seed()
 
@@ -50,22 +50,32 @@ def main_menu():
 
 
 def create_character():
-    creation = False
+    valid_cl = True
 
-    '''
-    new_char = []
-    name = 'Not declared'
-    ch_class = 'Not declared'
-    level = 'Not declared'
-    player = 'Not declared'
-    race = 'Not declared'
-    alignment = 'Not declared'
-    experience = 'Not declared'
-    '''
+    pk_name = input('Enter character name: ')
+
+    while valid_cl:
+        pk_class = input('Enter character class: ')
+        valid_class_pk = class_list(pk_class)
+
+    pk_level = input('Enter character level: ')
+    pk_owner = input('Enter player\'s name: ')
+    pk_race = input('Enter character race: ')
+    pk_alignment = input('Enter character\'s alignment: ')
+    pk_experience_ttl = input('Enter total experience: ')
+
+    new_character = Character(ch_owner=pk_owner, ch_name=pk_name, ch_class=valid_class_pk, ch_level=pk_level,
+                    ch_race=pk_race, ch_alignment=pk_alignment, ch_experience_ttl=pk_experience_ttl)
+
+    return new_character
+
+
+def edit_character():
+    creation = False
 
 #    new_character = Character()
 
-    creation_menu = ['1. Name', '2. Class', '3. Level',
+    edit_menu = ['1. Name', '2. Class', '3. Level',
                      '4. Player', '5. Race', '6. Alignment',
                      '7. Experience', '8. Save Character',
                      ]

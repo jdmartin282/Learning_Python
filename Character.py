@@ -1,4 +1,4 @@
-class Character():
+class Character:
     def __init__(self, ch_owner, ch_name, ch_class, ch_level,
                  ch_race, ch_alignment, ch_experience_ttl):
         self.ch_owner = ch_owner
