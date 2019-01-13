@@ -9,5 +9,3 @@ class Character:
         self.ch_alignment = ch_alignment
         self.ch_experience_ttl = ch_experience_ttl
 
-
-
