@@ -4,6 +4,7 @@ from Character import Character
 
 random.seed()
 
+# Test Message
 
 def class_list(cl_type):
     jobs = ['Barbarian', 'Bard', 'Cleric',
@@ -115,6 +116,9 @@ def edit_character():
             pk_experience_ttl = input('Enter total experience: ')
             pk_experience_ttl = 'Experience: ' + pk_experience_ttl
 #            new_character.ch_experience_ttl = pk_experience_ttl
+
+def createCharacter():
+    char_name = input('Enter character name: ')
 
 # broken, please fix me please
 '''
