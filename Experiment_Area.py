@@ -106,7 +106,7 @@ def create_character():
             pk_experience_ttl = 'Experience: ' + pk_experience_ttl
 #            new_character.ch_experience_ttl = pk_experience_ttl
 
-# broken, please fix me
+# broken, please fix me please
 '''
         elif set_info == 8:
             new_char = [name, ch_class, level, player, race, alignment, experience]
