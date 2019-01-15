@@ -79,4 +79,3 @@ if __name__ == '__main__':
     x.saveCharacter(z)
     a1 = x.loadCharacter(z.name)
     print('debugline')
-    # Testing
