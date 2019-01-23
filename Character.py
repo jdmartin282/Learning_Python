@@ -11,6 +11,35 @@ class Stats:
         self.wisdom = wisdom
 
 
+class Skills:
+
+    __slots__ = ['acrobatics', 'animal_handling', 'arcana', 'athletics', 'deception', 'history', 'insight',
+                 'intimidation', 'investigation', 'medicine', 'nature', 'perception', 'performance', 'persuasion',
+                 'religion', 'sleight_of_hand', 'stealth', 'survival']
+
+    def __init__(self, acrobatics, animal_handling, arcana, athletics, deception, history, insight, intimidation,
+                 investigation, medicine, nature, perception, performance, persuasion, religion, sleight_of_hand,
+                 stealth, survival):
+        self.acrobatics = acrobatics
+        self.animal_handling = animal_handling
+        self.arcana = arcana
+        self.athletics = athletics
+        self.deception = deception
+        self.history = history
+        self.insight = insight
+        self.intimidation = intimidation
+        self.investigation = investigation
+        self.medicine = medicine
+        self.nature = nature
+        self.perception = perception
+        self.performance = performance
+        self.persuasion = persuasion
+        self.religion = religion
+        self.sleight_of_hand = sleight_of_hand
+        self.stealth = stealth
+        self.survival = survival
+
+
 class Character:
 
     __slots__ = ['player', 'name', 'job', 'level', 'race', 'stats', 'alignment', 'experience']
