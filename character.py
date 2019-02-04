@@ -24,3 +24,4 @@ class Stats:
         self.intelligence = intelligence
         self.charisma = charisma
         self.constitution = constitution
+

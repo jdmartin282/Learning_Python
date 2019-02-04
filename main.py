@@ -5,6 +5,7 @@ from character import Character
 random.seed()
 
 
+
 # Function to check if user input was an actual class
 def class_list(cl_type):
     jobs = ['Barbarian', 'Bard', 'Cleric',
