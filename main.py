@@ -5,23 +5,46 @@ from character import Character
 random.seed()
 
 
+class Main:
 
-# Function to check if user input was an actual class
-def class_list(cl_type):
-    jobs = ['Barbarian', 'Bard', 'Cleric',
-            'Druid', 'Fighter', 'Monk',
-            'Paladin', 'Ranger', 'Rogue',
-            'Sorcerer',
-            ]
+    # Function to check if user input was an actual class
+    jobList = ['Barbarian',
+               'Bard',
+               'Cleric',
+               'Druid',
+               'Fighter',
+               'Monk',
+               'Paladin',
+               'Ranger',
+               'Rogue',
+               'Sorcerer',
+               ]
 
-    for job in jobs:
-        if cl_type.title() == job:
+    def job_check(self, jobType):
+        job = input('Enter character job: ')
+        if job.title() in self.jobList:
+            return True
+        else:
+            print('Please select from this list:')
+            for j in self.jobList:
+                print(j)
             return False
 
-    print('Not an acceptable class!  Enter class or type Exit to quit.')
-    return True
 
+    # Function to create a new character
+    def create_character(self):
+        owner = input('Enter player\'s name: ')
+        name = input('Enter character name: ')
+        job = self.job_check()
+        level = int(input('Enter character level: '))
+        race = input('Enter character race: ')
+        alignment = input('Enter character\'s alignment: ')
+        experience = int(input('Enter total experience: '))
 
+        new_character = Character(owner, name, job, level, race, alignment, experience)
+        return new_character
+
+'''
 # Function to display options and call requisite functions
 def main_menu():
     loop_check = False
@@ -39,7 +62,7 @@ def main_menu():
 
 # Calls function to create a new character
         if choice == 1:
-            current_char = create_new_character()
+            current_char = self.create_character()
             loop_check = True
 
 # Calls function to edit current character if one is loaded
@@ -59,34 +82,20 @@ def main_menu():
             print('Invalid selection')
 
     return current_char
-
-
-# Function to create a new character
-def create_new_character():
-    valid_cl = True
-
-    pk_name = input('Enter character name: ')
-    while valid_cl:
-        pk_class = input('Enter character class: ')
-        valid_cl = class_list(pk_class)
-    pk_level = input('Enter character level: ')
-    pk_owner = input('Enter player\'s name: ')
-    pk_race = input('Enter character race: ')
-    pk_alignment = input('Enter character\'s alignment: ')
-    pk_experience_ttl = input('Enter total experience: ')
-
-    new_character = Character(ch_owner=pk_owner, ch_name=pk_name, ch_class=pk_class, ch_level=pk_level,
-                              ch_race=pk_race, ch_alignment=pk_alignment, ch_experience_ttl=pk_experience_ttl)
-    return new_character
-
+'''
 
 # Function to edit a pre-existing character
-def edit_existing_character(edit_character):
+def edit_character(edit_character):
     creation = False
 
-    edit_menu = ['1. Name', '2. Class', '3. Level',
-                 '4. Player', '5. Race', '6. Alignment',
-                 '7. Experience', '8. Save Character',
+    edit_menu = ['1. Name',
+                 '2. Class',
+                 '3. Level',
+                 '4. Player',
+                 '5. Race',
+                 '6. Alignment',
+                 '7. Experience',
+                 '8. Save Character',
                  ]
 
     while not creation:
@@ -119,12 +128,12 @@ def edit_existing_character(edit_character):
             pk_experience_ttl = input('Enter new experience total: ')
             edit_character.ch_experience_ttl = pk_experience_ttl
 
-        edit_character = Character(ch_owner=pk_owner, ch_name=pk_name, ch_class=pk_class, ch_level=pk_level,
+        character = Character(ch_owner=pk_owner, ch_name=pk_name, ch_class=pk_class, ch_level=pk_level,
                                    ch_race=pk_race, ch_alignment=pk_alignment, ch_experience_ttl=pk_experience_ttl)
         return edit_character
 
 
-# broken, please fix me please
+# broken, please fix me
 '''
         elif set_info == 8:
             new_char = [name, ch_class, level, player, race, alignment, experience]
@@ -137,7 +146,7 @@ def edit_existing_character(edit_character):
             print('Not valid menu option!')
 '''
 
-
+'''
 def open_character():
     open_name = input('Enter pre-existing character name: ')
 
@@ -145,7 +154,7 @@ def open_character():
         character = json.load(exists)
 
     print(character)
-
+'''
 
 '''
 with open('Illiya_Valira.json', 'r') as character_info:
@@ -159,5 +168,5 @@ for i in range(10):
 print(random.randrange(1, 7))
 '''
 
-
-main_menu()
+if __name__ == '__main__':
+    #main_menu()
