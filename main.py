@@ -20,16 +20,15 @@ class Main:
                'Sorcerer',
                ]
 
-    def job_check(self, jobType):
-        job = input('Enter character job: ')
+    def job_check(self):
+        job = input('Enter character class: ')
         if job.title() in self.jobList:
-            return True
+            return job.title()
         else:
             print('Please select from this list:')
             for j in self.jobList:
                 print(j)
-            return False
-
+            return self.job_check()
 
     # Function to create a new character
     def create_character(self):
@@ -42,7 +41,89 @@ class Main:
         experience = int(input('Enter total experience: '))
 
         new_character = Character(owner, name, job, level, race, alignment, experience)
+
+        # Test for correct attributes
+        test_list = [owner, name, job, level, race, alignment, experience]
+        for t in test_list:
+            print(t)
+
         return new_character
+
+    # Function to edit a pre-existing character
+    def edit_character(self, character):
+        creation = False
+        edit_character = character
+
+        edit_menu = ['1. Owner',
+                     '2. Name',
+                     '3. Class',
+                     '4. Level',
+                     '5. Race',
+                     '6. Alignment',
+                     '7. Experience',
+                     #'8. Save Changes',
+                     '0. Exit',
+                     ]
+
+        while not creation:
+            for item in edit_menu:
+                print(item)
+            set_info = int(input('Select menu item number: '))
+
+            if set_info == 1:
+                owner = input('Enter new player\'s name: ')
+                edit_character.owner = owner
+
+                print(edit_character.owner)
+
+            elif set_info == 2:
+                name = input('Enter new character name: ')
+                edit_character.name = name
+
+                print(edit_character.name)
+
+            elif set_info == 3:
+                edit_character.job = self.job_check()
+
+                print(edit_character.job)
+
+            elif set_info == 4:
+                level = input('Enter new character level: ')
+                edit_character.level = level
+
+                print(edit_character.level)
+
+            elif set_info == 5:
+                race = input('Enter new character race: ')
+                edit_character.race = race
+
+                print(edit_character.race)
+
+            elif set_info == 6:
+                alignment = input('Enter new character\'s alignment: ')
+                edit_character.alignment = alignment
+
+                print(edit_character.alignment)
+
+            elif set_info == 7:
+                experience = input('Enter new experience total: ')
+                edit_character.experience = experience
+
+                print(edit_character.experience)
+
+            elif set_info == 0:
+                creation = True
+            else:
+                print('Invalid menu option!')
+
+        return edit_character
+
+
+if __name__ == '__main__':
+    x = Main()
+    my_character = x.create_character()
+    my_character = x.edit_character(my_character)
+
 
 '''
 # Function to display options and call requisite functions
@@ -84,53 +165,6 @@ def main_menu():
     return current_char
 '''
 
-# Function to edit a pre-existing character
-def edit_character(edit_character):
-    creation = False
-
-    edit_menu = ['1. Name',
-                 '2. Class',
-                 '3. Level',
-                 '4. Player',
-                 '5. Race',
-                 '6. Alignment',
-                 '7. Experience',
-                 '8. Save Character',
-                 ]
-
-    while not creation:
-        for item in edit_menu:
-            print(item)
-        set_info = int(input('Select menu item number: '))
-
-        if set_info == 1:
-            pk_name = input('Enter new character name: ')
-            edit_character.ch_name = pk_name
-        elif set_info == 2:
-            valid_cl = True
-            while valid_cl:
-                pk_class = input('Enter new character class: ')
-                valid_cl = class_list(pk_class)
-                edit_character.ch_class = pk_class
-        elif set_info == 3:
-            pk_level = input('Enter new character level: ')
-            edit_character.ch_level = pk_level
-        elif set_info == 4:
-            pk_owner = input('Enter new player\'s name: ')
-            edit_character.ch_owner = pk_owner
-        elif set_info == 5:
-            pk_race = input('Enter new character race: ')
-            edit_character.ch_race = pk_race
-        elif set_info == 6:
-            pk_alignment = input('Enter new character\'s alignment: ')
-            edit_character.ch_alignment = pk_alignment
-        elif set_info == 7:
-            pk_experience_ttl = input('Enter new experience total: ')
-            edit_character.ch_experience_ttl = pk_experience_ttl
-
-        character = Character(ch_owner=pk_owner, ch_name=pk_name, ch_class=pk_class, ch_level=pk_level,
-                                   ch_race=pk_race, ch_alignment=pk_alignment, ch_experience_ttl=pk_experience_ttl)
-        return edit_character
 
 
 # broken, please fix me
@@ -168,5 +202,3 @@ for i in range(10):
 print(random.randrange(1, 7))
 '''
 
-if __name__ == '__main__':
-    #main_menu()

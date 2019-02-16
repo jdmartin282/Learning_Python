@@ -2,7 +2,7 @@ class Character:
 
     __slots__ = ['self', 'player', 'name', 'job', 'race', 'alignment', 'stats', 'level', 'experience']
 
-    def __init__(self, player, name, job, race, alignment, level=1, experience=0):
+    def __init__(self, player, name, job, race, alignment, stats, level=1, experience=0):
         self.player = player
         self.name = name
         self.job = job
@@ -10,7 +10,7 @@ class Character:
         self.race = race
         self.alignment = alignment
         self.experience = experience
-        self.stats = Stats()
+        #self.stats = Stats()
 
 
 class Stats:
