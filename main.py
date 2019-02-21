@@ -40,7 +40,7 @@ class Main:
         alignment = input('Enter character\'s alignment: ')
         experience = int(input('Enter total experience: '))
 
-        new_character = Character(owner, name, job, level, race, alignment, experience)
+        new_character = Character(owner, name, job, race, alignment, stats=None, level=level, experience=experience)
 
         # Test for correct attributes
         test_list = [owner, name, job, level, race, alignment, experience]
