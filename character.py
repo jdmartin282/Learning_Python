@@ -25,3 +25,64 @@ class Character:
         self.experience = experience
         self.stats = stats
 
+
+class Barbarian(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Bard(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Cleric(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Druid(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Fighter(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Monk(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Paladin(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Ranger(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Rogue(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Sorcerer(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+
+
+class Warlock(Character):
+    def __init__(self, patron, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+        self.patron = patron
+
+
+class Wizard(Character):
+    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+        super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
+

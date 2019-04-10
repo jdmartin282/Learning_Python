@@ -1,6 +1,6 @@
 import random
-import json
-from character import Character
+#import json
+from character import Character, Stats
 
 random.seed()
 
@@ -32,7 +32,7 @@ class Main:
 
     # Function to create a new character
     def create_character(self):
-        owner = input('Enter player\'s name: ')
+        player = input('Enter player\'s name: ')
         name = input('Enter character name: ')
         job = self.job_check()
         level = int(input('Enter character level: '))
@@ -40,10 +40,11 @@ class Main:
         alignment = input('Enter character\'s alignment: ')
         experience = int(input('Enter total experience: '))
 
-        new_character = Character(owner, name, job, race, alignment, stats=None, level=level, experience=experience)
+        new_character = Character(player, name, job, race, alignment, stats=None, level=level, experience=experience)
+
 
         # Test for correct attributes
-        test_list = [owner, name, job, level, race, alignment, experience]
+        test_list = [player, name, job, level, race, alignment, experience]
         for t in test_list:
             print(t)
 
@@ -54,7 +55,7 @@ class Main:
         creation = False
         edit_character = character
 
-        edit_menu = ['1. Owner',
+        edit_menu = ['1. Player',
                      '2. Name',
                      '3. Class',
                      '4. Level',
@@ -71,10 +72,10 @@ class Main:
             set_info = int(input('Select menu item number: '))
 
             if set_info == 1:
-                owner = input('Enter new player\'s name: ')
-                edit_character.owner = owner
+                player = input('Enter new player\'s name: ')
+                edit_character.player = player
 
-                print(edit_character.owner)
+                print(edit_character.player)
 
             elif set_info == 2:
                 name = input('Enter new character name: ')
@@ -118,18 +119,50 @@ class Main:
 
         return edit_character
 
+    # def set_stats(self, character):
+    #     strength = int(input('Enter strength: '))
+    #     dexterity = int(input('Enter dexterity: '))
+    #     wisdom = int(input('Enter wisdom: '))
+    #     intelligence = int(input('Enter intelligence: '))
+    #     charisma = int(input('Enter charisma: '))
+    #     constitution = int(input('Enter constitution: '))
+    #
+    #     return character_stats
+
+    # classes = {'Barbarian': Barbarian(),
+    #            'Bard': Bard(),
+    #            'Cleric': Cleric(),
+    #            'Druid': Druid(),
+    #            'Fighter': Fighter(),
+    #            'Monk': Monk(),
+    #            'Paladin': Paladin(),
+    #            'Ranger': Ranger(),
+    #            'Rogue': Rogue(),
+    #            'Sorcerer': Sorcerer(),
+    #            'Warlock': Warlock(),
+    #            'Wizard': Wizard(),
+    #            }
+    #
+    # def createClass(self, character, job):
+    #     return self.classes[job].__new__(character)
+
 
 if __name__ == '__main__':
     x = Main()
-    my_character = x.create_character()
-    my_character = x.edit_character(my_character)
+#    my_character = x.create_character()
+    my_character = Character(player='Jesse', name='Illiya', job='Druid', race='Half-Elf', alignment='CN', stats=None,
+                             level=9, experience=0)
 
+    my_character = x.edit_character(my_character)
+    # x.set_stats(my_character)
+    # my_character = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
+    # print(my_character.strength)
+    # print(my_character.charisma)
 
 '''
 # Function to display options and call requisite functions
-def main_menu():
+def main_menu(self):
     loop_check = False
-    current_char = 'null'
 
     menu = ['1. Create new character',
             '2. Update existing character',
@@ -141,15 +174,15 @@ def main_menu():
             print(choice)
         choice = int(input('Enter choice: '))
 
-# Calls function to create a new character
+        # Calls function to create a new character
         if choice == 1:
-            current_char = self.create_character()
+            current_char = current_char.create_character()
             loop_check = True
 
-# Calls function to edit current character if one is loaded
+        # Calls function to edit current character if one is loaded
         elif choice == 2:
             if not current_char:
-                current_char = edit_existing_character(current_char)
+                current_char = current_char.edit_character(current_char)
                 loop_check = True
             else:
                 print("No character currently opened!")
@@ -164,8 +197,6 @@ def main_menu():
 
     return current_char
 '''
-
-
 
 # broken, please fix me
 '''
