@@ -1,47 +1,68 @@
 import random
 #import json
-from character import Character
+from character import *
 
 random.seed()
 
 
 class Main:
 
-    # Function to check if user input was an actual class
-    jobList = ['Barbarian',
-               'Bard',
-               'Cleric',
-               'Druid',
-               'Fighter',
-               'Monk',
-               'Paladin',
-               'Ranger',
-               'Rogue',
-               'Sorcerer',
-               ]
+    def __init__(self):
+        self.classes = {'Barbarian': Barbarian,
+                        'Bard': Bard,
+                        'Cleric': Cleric,
+                        'Druid': Druid,
+                        'Fighter': Fighter,
+                        'Monk': Monk,
+                        'Paladin': Paladin,
+                        'Ranger': Ranger,
+                        'Rogue': Rogue,
+                        'Sorcerer': Sorcerer,
+                        'Warlock': Warlock,
+                        'Wizard': Wizard,
+                        }
+
+        # Function to check if user input was an actual class
+        self.jobList = ['Barbarian',
+                        'Bard',
+                        'Cleric',
+                        'Druid',
+                        'Fighter',
+                        'Monk',
+                        'Paladin',
+                        'Ranger',
+                        'Rogue',
+                        'Sorcerer',
+                        'Warlock',
+                        'Wizard',
+                        ]
 
     def job_check(self):
+        for j in self.jobList:
+            print(j)
         job = input('Enter character class: ')
+
         if job.title() in self.jobList:
             return job.title()
         else:
-            print('Please select from this list:')
-            for j in self.jobList:
-                print(j)
+            print('\nPlease select from this list:')
             return self.job_check()
 
     # Function to create a new character
     def create_character(self):
-        player = input('Enter player\'s name: ')
-        name = input('Enter character name: ')
+
+        player = input('Enter player\'s name: ').title()
+        name = input('Enter character name: ').title()
+
+        print('\nAvailable classes: ')
         job = self.job_check()
         level = int(input('Enter character level: '))
         race = input('Enter character race: ')
         alignment = input('Enter character\'s alignment: ')
         experience = int(input('Enter total experience: '))
 
-        new_character = Character(player, name, job, race, alignment, stats=None, level=level, experience=experience)
-
+        new_character = self.classes[job](player, name, job, race, alignment,
+                                          stats=None, level=level, experience=experience)
 
         # Test for correct attributes
         test_list = [player, name, job, level, race, alignment, experience]
@@ -119,57 +140,31 @@ class Main:
 
         return edit_character
 
-    def set_stats(self, character):
-        character_stats = character
+    def create_stats(self):
+
         strength = int(input('Enter strength: '))
-        character_stats.strength = strength
-
         dexterity = int(input('Enter dexterity: '))
-        character_stats.dexterity = dexterity
-
         wisdom = int(input('Enter wisdom: '))
-        character_stats.wisdom = wisdom
-
         intelligence = int(input('Enter intelligence: '))
-        character_stats.intelligence = intelligence
-
         charisma = int(input('Enter charisma: '))
-        character_stats.charisma = charisma
-
         constitution = int(input('Enter constitution: '))
-        character_stats.constitution = constitution
 
-        return character_stats
+        new_stats = Stats(strength=strength, dexterity=dexterity, wisdom=wisdom,
+                          intelligence=intelligence, charisma=charisma, constitution=constitution)
 
-    # classes = {'Barbarian': Barbarian(),
-    #            'Bard': Bard(),
-    #            'Cleric': Cleric(),
-    #            'Druid': Druid(),
-    #            'Fighter': Fighter(),
-    #            'Monk': Monk(),
-    #            'Paladin': Paladin(),
-    #            'Ranger': Ranger(),
-    #            'Rogue': Rogue(),
-    #            'Sorcerer': Sorcerer(),
-    #            'Warlock': Warlock(),
-    #            'Wizard': Wizard(),
-    #            }
-    #
-    # def createClass(self, character, job):
-    #     return self.classes[job].__new__(character)
+        return new_stats
 
 
 if __name__ == '__main__':
     x = Main()
-#    my_character = x.create_character()
-    my_character = Character(player='Jesse', name='Sevros', job='Monk', race='Human', alignment='Chaotic-Neutral',
-                             stats=None, level=9, experience=8821)
-    print(my_character.level)
+    my_character = x.create_character()
+#     my_stats = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
+#     my_character = Character(player='Jesse', name='Sevros', job='Monk', race='Human', alignment='Chaotic-Neutral',
+#                              stats=my_stats, level=9, experience=8821)
+    print(my_character)
+#     print(my_character.stats.strength)
     # my_character = x.edit_character(my_character)
     # x.set_stats(my_character)
-    # my_character = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
-    # print(my_character.player)
-    # print(my_character.charisma)
 
     # for i in my_character.__slots__:
     #     print(i)
