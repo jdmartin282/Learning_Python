@@ -15,7 +15,7 @@ class Character:
 
     __slots__ = ['player', 'name', 'job', 'race', 'alignment', 'stats', 'level', 'experience']
 
-    def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
+    def __init__(self, player, name, job, race, alignment, stats=Stats, level=1, experience=0):
         self.player = player
         self.name = name
         self.job = job
@@ -86,3 +86,6 @@ class Wizard(Character):
     def __init__(self, player, name, job, race, alignment, stats: Stats, level=1, experience=0):
         super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
 
+
+if __name__ == '__main__':
+    pass

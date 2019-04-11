@@ -1,6 +1,6 @@
 import random
 #import json
-from character import Character, Stats
+from character import Character
 
 random.seed()
 
@@ -104,13 +104,13 @@ class Main:
                 alignment = input('Enter new character\'s alignment: ')
                 edit_character.alignment = alignment
 
-                print(edit_character.alignment)
+                print(f'Alignment changed to {edit_character.alignment}!\n')
 
             elif set_info == 7:
                 experience = input('Enter new experience total: ')
                 edit_character.experience = experience
 
-                print(edit_character.experience)
+                print(f'Experience changed to {edit_character.experience}!')
 
             elif set_info == 0:
                 creation = True
@@ -119,15 +119,27 @@ class Main:
 
         return edit_character
 
-    # def set_stats(self, character):
-    #     strength = int(input('Enter strength: '))
-    #     dexterity = int(input('Enter dexterity: '))
-    #     wisdom = int(input('Enter wisdom: '))
-    #     intelligence = int(input('Enter intelligence: '))
-    #     charisma = int(input('Enter charisma: '))
-    #     constitution = int(input('Enter constitution: '))
-    #
-    #     return character_stats
+    def set_stats(self, character):
+        character_stats = character
+        strength = int(input('Enter strength: '))
+        character_stats.strength = strength
+
+        dexterity = int(input('Enter dexterity: '))
+        character_stats.dexterity = dexterity
+
+        wisdom = int(input('Enter wisdom: '))
+        character_stats.wisdom = wisdom
+
+        intelligence = int(input('Enter intelligence: '))
+        character_stats.intelligence = intelligence
+
+        charisma = int(input('Enter charisma: '))
+        character_stats.charisma = charisma
+
+        constitution = int(input('Enter constitution: '))
+        character_stats.constitution = constitution
+
+        return character_stats
 
     # classes = {'Barbarian': Barbarian(),
     #            'Bard': Bard(),
@@ -150,14 +162,17 @@ class Main:
 if __name__ == '__main__':
     x = Main()
 #    my_character = x.create_character()
-    my_character = Character(player='Jesse', name='Illiya', job='Druid', race='Half-Elf', alignment='CN', stats=None,
-                             level=9, experience=0)
-
-    my_character = x.edit_character(my_character)
+    my_character = Character(player='Jesse', name='Sevros', job='Monk', race='Human', alignment='Chaotic-Neutral',
+                             stats=None, level=9, experience=8821)
+    print(my_character.level)
+    # my_character = x.edit_character(my_character)
     # x.set_stats(my_character)
     # my_character = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
-    # print(my_character.strength)
+    # print(my_character.player)
     # print(my_character.charisma)
+
+    # for i in my_character.__slots__:
+    #     print(i)
 
 '''
 # Function to display options and call requisite functions
