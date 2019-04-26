@@ -8,6 +8,7 @@ random.seed()
 class Main:
 
     def __init__(self):
+        # Dictionary to call against for predetermined job
         self.classes = {'Barbarian': Barbarian,
                         'Bard': Bard,
                         'Cleric': Cleric,
@@ -22,7 +23,7 @@ class Main:
                         'Wizard': Wizard,
                         }
 
-        # Function to check if user input was an actual class
+        # List to test against for valid jobs
         self.jobList = ['Barbarian',
                         'Bard',
                         'Cleric',
@@ -37,6 +38,31 @@ class Main:
                         'Wizard',
                         ]
 
+        # List to test against for valid races
+        self.raceList = ['Dwarf',
+                         'Elf',
+                         'Halfling',
+                         'Human',
+                         'Dragonborn',
+                         'Gnome',
+                         'Half-Elf',
+                         'Half-Orc',
+                         'Tiefling',
+                         ]
+
+        # List to test against for valid alignments
+        self.alignmentList = ['Lawful Good',
+                              'Neutral Good',
+                              'Chaotic Good',
+                              'Lawful Neutral',
+                              'True Neutral',
+                              'Chaotic Neutral',
+                              'Lawful Evil',
+                              'Neutral Evil',
+                              'Chaotic Evil',
+                              ]
+
+    # Function to check if the chosen job is valid from predetermined list
     def job_check(self):
         for j in self.jobList:
             print(j)
@@ -48,6 +74,30 @@ class Main:
             print('\nPlease select from this list:')
             return self.job_check()
 
+    # Function to check if the chosen race is valid from predetermined list
+    def race_check(self):
+        for r in self.raceList:
+            print(r)
+        race = input('Enter character class: ')
+
+        if race.title() in self.raceList:
+            return race.title()
+        else:
+            print('\nPlease select from this list:')
+            return self.race_check()
+
+    # Function to check if the chosen alignment is valid from predetermined list
+    def alignment_check(self):
+        for a in self.alignmentList:
+            print(a)
+        alignment = input('Enter character alignment: ')
+
+        if alignment.title() in self.alignmentList:
+            return alignment.title()
+        else:
+            print('\nPlease select from this list:')
+            return self.alignment_check()
+
     # Function to create a new character
     def create_character(self):
 
@@ -58,16 +108,16 @@ class Main:
         job = self.job_check()
         level = int(input('Enter character level: '))
         race = input('Enter character race: ')
-        alignment = input('Enter character\'s alignment: ')
+        alignment = self.alignment_check()
         experience = int(input('Enter total experience: '))
 
         new_character = self.classes[job](player, name, job, race, alignment,
                                           stats=None, level=level, experience=experience)
 
         # Test for correct attributes
-        test_list = [player, name, job, level, race, alignment, experience]
-        for t in test_list:
-            print(t)
+        # test_list = [player, name, job, level, race, alignment, experience]
+        # for t in test_list:
+        #     print(t)
 
         return new_character
 
@@ -83,7 +133,6 @@ class Main:
                      '5. Race',
                      '6. Alignment',
                      '7. Experience',
-                     #'8. Save Changes',
                      '0. Exit',
                      ]
 
@@ -158,13 +207,20 @@ class Main:
 if __name__ == '__main__':
     x = Main()
     my_character = x.create_character()
-#     my_stats = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
-#     my_character = Character(player='Jesse', name='Sevros', job='Monk', race='Human', alignment='Chaotic-Neutral',
-#                              stats=my_stats, level=9, experience=8821)
-    print(my_character)
-#     print(my_character.stats.strength)
+    # my_stats = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
+    # my_character = Character(player='Jesse', name='Sevros', job='Monk', race='Human', alignment='Chaotic-Neutral',
+    #                          stats=None, level=9, experience=8821)
+    # print(my_character)
+    # print(my_character.Druid.circle)
     # my_character = x.edit_character(my_character)
-    # x.set_stats(my_character)
+    # my_character.stats = x.create_stats()
+
+    # print(my_character.stats.strength)
+    # print(my_character.stats.dexterity)
+    # print(my_character.stats.wisdom)
+    # print(my_character.stats.intelligence)
+    # print(my_character.stats.charisma)
+    # print(my_character.stats.constitution)
 
     # for i in my_character.__slots__:
     #     print(i)
