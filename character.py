@@ -45,6 +45,7 @@ class Druid(Character):
     def __init__(self, circle, player, name, job, race, alignment, stats=Stats, level=1, experience=0):
         super().__init__(player, name, job, race, alignment, stats=Stats, level=level, experience=experience)
         self.circle = circle
+        self.stats = stats
 
 
 class Fighter(Character):

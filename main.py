@@ -8,6 +8,9 @@ random.seed()
 class Main:
 
     def __init__(self):
+########################################################################################################################
+# Dictionaries and lists to call and test against
+########################################################################################################################
         # Dictionary to call against for predetermined job
         self.classes = {'Barbarian': Barbarian,
                         'Bard': Bard,
@@ -22,6 +25,21 @@ class Main:
                         'Warlock': Warlock,
                         'Wizard': Wizard,
                         }
+
+        # Dictionary to call functions for individual classes
+        self.createClasses = {'Barbarian': self.create_barbarian,
+                              'Bard': self.create_bard,
+                              'Cleric': self.create_cleric,
+                              'Druid': self.create_druid,
+                              'Fighter': self.create_fighter,
+                              'Monk': self.create_monk,
+                              # 'Paladin': self.create_paladin,
+                              # 'Ranger': self.create_ranger,
+                              # 'Rogue': self.create_rogue,
+                              # 'Sorcerer': self.create_sorcerer,
+                              # 'Warlock': self.create_warlock,
+                              # 'Wizard': self.create_wizard,
+                              }
 
         # List to test against for valid jobs
         self.jobList = ['Barbarian',
@@ -62,6 +80,43 @@ class Main:
                               'Chaotic Evil',
                               ]
 
+########################################################################################################################
+# Functions to set class specific attributes
+########################################################################################################################
+
+    def create_barbarian(self, player, name, job, race, alignment, stats, level, experience):
+        path = 'Path' # Function to call circle and provided stats/info
+        return self.classes['Barbarian'](path, player, name, job, race, alignment,
+                                     stats, level, experience)
+
+    def create_bard(self, player, name, job, race, alignment, stats, level, experience):
+        college = 'College' # Function to call circle and provided stats/info
+        return self.classes['Bard'](college, player, name, job, race, alignment,
+                                     stats, level, experience)
+
+    def create_cleric(self, player, name, job, race, alignment, stats, level, experience):
+        domain = 'Domain' # Function to call circle and provided stats/info
+        return self.classes['Cleric'](domain, player, name, job, race, alignment,
+                                     stats, level, experience)
+
+    def create_druid(self, player, name, job, race, alignment, stats, level, experience):
+        circle = 'Land' # Function to call circle and provided stats/info
+        return self.classes['Druid'](circle, player, name, job, race, alignment,
+                                     stats, level, experience)
+
+    def create_fighter(self, player, name, job, race, alignment, stats, level, experience):
+        fightingStyle = 'Fighting Style' # Function to call circle and provided stats/info
+        return self.classes['Fighter'](fightingStyle, player, name, job, race, alignment,
+                                     stats, level, experience)
+
+    def create_monk(self, player, name, job, race, alignment, stats, level, experience):
+        martialArts = 'Martial Arts' # Function to call circle and provided stats/info
+        return self.classes['Monk'](martialArts, player, name, job, race, alignment,
+                                     stats, level, experience)
+
+########################################################################################################################
+# Test loops for correct spelling and actual jobs, races, and alignments
+########################################################################################################################
     # Function to check if the chosen job is valid from predetermined list
     def job_check(self):
         for j in self.jobList:
@@ -98,6 +153,9 @@ class Main:
             print('\nPlease select from this list:')
             return self.alignment_check()
 
+########################################################################################################################
+# Functions to create and edit characters and stats
+########################################################################################################################
     # Function to create a new character
     def create_character(self):
 
@@ -107,12 +165,13 @@ class Main:
         print('\nAvailable classes: ')
         job = self.job_check()
         level = int(input('Enter character level: '))
-        race = input('Enter character race: ')
+        race = self.race_check()
         alignment = self.alignment_check()
         experience = int(input('Enter total experience: '))
+        stats = self.create_stats()
 
-        new_character = self.classes[job](player, name, job, race, alignment,
-                                          stats=None, level=level, experience=experience)
+        new_character = self.createClasses[job](player, name, job, race, alignment,
+                                                stats=stats, level=level, experience=experience)
 
         # Test for correct attributes
         # test_list = [player, name, job, level, race, alignment, experience]
@@ -204,27 +263,37 @@ class Main:
         return new_stats
 
 
+########################################################################################################################
+# Main Test Area
+########################################################################################################################
+
+
 if __name__ == '__main__':
     x = Main()
-    my_character = x.create_character()
-    # my_stats = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
-    # my_character = Character(player='Jesse', name='Sevros', job='Monk', race='Human', alignment='Chaotic-Neutral',
-    #                          stats=None, level=9, experience=8821)
+    # my_character = x.create_character()
+    my_stats = Stats(strength=12, dexterity=10, wisdom=9, intelligence=10, charisma=8, constitution=14)
+    my_character = Druid(circle='Land', player='Jesse', name='Illiya', job='Druid', race='Half-Elf',
+                         alignment='ChaoticNeutral', stats=my_stats, level=7, experience=8821)
     # print(my_character)
     # print(my_character.Druid.circle)
     # my_character = x.edit_character(my_character)
     # my_character.stats = x.create_stats()
 
-    # print(my_character.stats.strength)
-    # print(my_character.stats.dexterity)
-    # print(my_character.stats.wisdom)
-    # print(my_character.stats.intelligence)
-    # print(my_character.stats.charisma)
-    # print(my_character.stats.constitution)
+    print(my_character.circle)
+    print(my_character.stats.strength)
+    print(my_character.stats.dexterity)
+    print(my_character.stats.wisdom)
+    print(my_character.stats.intelligence)
+    print(my_character.stats.charisma)
+    print(my_character.stats.constitution)
 
     # for i in my_character.__slots__:
     #     print(i)
 
+
+########################################################################################################################
+# Dead code needing updated/refactored
+########################################################################################################################
 '''
 # Function to display options and call requisite functions
 def main_menu(self):
